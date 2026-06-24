@@ -1,0 +1,855 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Portofolio | Asyifa Nur Khasanah</title>
+    <!-- Google Fonts -->
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600;700&display=swap" rel="stylesheet">
+    <!-- FontAwesome untuk Ikon -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <style>
+        /* CSS Variables - Premium Dark Theme */
+        :root {
+            --bg-main: #0f172a; /* Slate 900 */
+            --bg-card: #1e293b; /* Slate 800 */
+            --primary: #38bdf8; /* Sky 400 */
+            --secondary: #0ea5e9; /* Sky 500 */
+            --text-light: #f8fafc; /* Slate 50 */
+            --text-muted: #94a3b8; /* Slate 400 */
+            --glass-bg: rgba(15, 23, 42, 0.8);
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Poppins', sans-serif;
+            scroll-behavior: smooth;
+        }
+
+        body {
+            background-color: var(--bg-main);
+            color: var(--text-light);
+            line-height: 1.6;
+        }
+
+        a {
+            text-decoration: none;
+            color: var(--primary);
+            transition: 0.3s;
+        }
+
+        a:hover {
+            color: var(--text-light);
+        }
+
+        /* Glassmorphism Navigation */
+        header {
+            position: fixed;
+            top: 0;
+            width: 100%;
+            background: var(--glass-bg);
+            backdrop-filter: blur(10px);
+            padding: 1.2rem 5%;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            z-index: 1000;
+            border-bottom: 1px solid rgba(255, 255, 255, 0.05);
+        }
+
+        header h1 {
+            font-size: 1.5rem;
+            font-weight: 700;
+            color: var(--primary);
+            letter-spacing: 1px;
+        }
+
+        nav ul {
+            list-style: none;
+            display: flex;
+            gap: 2rem;
+        }
+
+        nav ul li a {
+            color: var(--text-light);
+            font-weight: 600;
+            font-size: 0.95rem;
+        }
+
+        nav ul li a:hover {
+            color: var(--primary);
+        }
+
+        /* Layout & Typography */
+        main {
+            padding: 100px 5% 2rem 5%;
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+
+        section {
+            margin-bottom: 5rem;
+            animation: fadeIn 1s ease-in-out;
+        }
+
+        h2.section-title {
+            font-size: 2.2rem;
+            font-weight: 700;
+            margin-bottom: 2rem;
+            display: flex;
+            align-items: center;
+            gap: 10px;
+            border-bottom: 2px solid var(--bg-card);
+            padding-bottom: 10px;
+        }
+
+        h2.section-title i {
+            color: var(--primary);
+        }
+
+        /* Hero Section */
+        .hero {
+            min-height: 80vh;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            text-align: left;
+        }
+		
+		/* Gaya untuk Foto Profil */
+        .profile-img-container {
+            width: 180px;
+            height: 180px;
+            border-radius: 50%; /* Membuat gambar menjadi lingkaran */
+            overflow: hidden;
+            border: 4px solid var(--primary); /* Memberikan garis tepi berwarna biru */
+            box-shadow: 0 10px 25px rgba(56, 189, 248, 0.3); /* Efek bayangan */
+            margin-bottom: 1.5rem;
+            animation: fadeIn 1s ease-in-out;
+        }
+
+        .profile-img-container img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover; /* Memastikan foto proporsional dan tidak gepeng */
+            display: block;
+        }
+
+        .hero h2 {
+            font-size: 3.5rem;
+            line-height: 1.2;
+            margin-bottom: 1rem;
+        }
+
+        .hero h2 span {
+            color: var(--primary);
+        }
+
+        .hero p.subtitle {
+            font-size: 1.2rem;
+            color: var(--text-muted);
+            max-width: 800px;
+            margin-bottom: 1.5rem;
+        }
+
+        .contact-badges {
+            display: flex;
+            gap: 1.5rem;
+            margin-top: 2rem;
+            flex-wrap: wrap;
+        }
+
+        .badge {
+            background: var(--bg-card);
+            padding: 0.8rem 1.5rem;
+            border-radius: 50px;
+            font-size: 0.95rem;
+            display: flex;
+            align-items: center;
+            gap: 10px;
+            border: 1px solid rgba(255, 255, 255, 0.05);
+            transition: transform 0.3s;
+        }
+
+        .badge:hover {
+            transform: translateY(-5px);
+            border-color: var(--primary);
+        }
+
+        /* Grid Layout for Cards */
+        .grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
+            gap: 2rem;
+        }
+
+        .card {
+            background: var(--bg-card);
+            padding: 2rem;
+            border-radius: 12px;
+            border: 1px solid rgba(255, 255, 255, 0.05);
+            transition: all 0.3s ease;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .card::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 4px;
+            height: 100%;
+            background: var(--primary);
+            transform: scaleY(0);
+            transition: transform 0.3s ease;
+        }
+
+        .card:hover {
+            transform: translateY(-10px);
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.5);
+        }
+
+        .card:hover::before {
+            transform: scaleY(1);
+        }
+
+        .card h3 {
+            font-size: 1.3rem;
+            color: var(--text-light);
+            margin-bottom: 0.5rem;
+        }
+
+        .card .date {
+            font-size: 0.85rem;
+            color: var(--primary);
+            font-weight: 600;
+            margin-bottom: 1rem;
+            display: block;
+        }
+
+        /* Skills Tags */
+        .skills-wrapper {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 1rem;
+            margin-bottom: 2rem;
+        }
+
+        .skill-tag {
+            background: rgba(56, 189, 248, 0.1);
+            color: var(--primary);
+            padding: 0.6rem 1.2rem;
+            border-radius: 8px;
+            font-weight: 600;
+            font-size: 0.9rem;
+            border: 1px solid rgba(56, 189, 248, 0.2);
+            transition: 0.3s;
+        }
+
+        .skill-tag:hover {
+            background: var(--primary);
+            color: var(--bg-main);
+        }
+
+        /* Certificates List */
+        .cert-list {
+            list-style: none;
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 1rem;
+        }
+
+        .cert-list li {
+            background: var(--bg-card);
+            padding: 1.2rem;
+            border-radius: 8px;
+            display: flex;
+            align-items: center;
+            gap: 15px;
+            border-left: 3px solid var(--text-muted);
+            transition: 0.3s;
+        }
+
+        .cert-list li:hover {
+            border-left-color: var(--primary);
+        }
+
+        .cert-list i {
+            color: var(--primary);
+            font-size: 1.5rem;
+        }
+		/* Tombol PDF pada Sertifikat */
+        .btn-pdf {
+            background: rgba(56, 189, 248, 0.1);
+            color: var(--primary);
+            padding: 0.4rem 0.8rem;
+            border-radius: 6px;
+            font-size: 0.8rem;
+            font-weight: 600;
+            border: 1px solid rgba(56, 189, 248, 0.2);
+            transition: 0.3s;
+            white-space: nowrap; /* Mencegah teks tombol turun ke baris baru */
+            display: flex;
+            align-items: center;
+            gap: 5px;
+        }
+
+        .btn-pdf:hover {
+            background: var(--primary);
+            color: var(--bg-main);
+        }
+		
+        footer {
+            text-align: center;
+            padding: 3rem;
+            border-top: 1px solid var(--bg-card);
+            color: var(--text-muted);
+            margin-top: 2rem;
+        }
+
+        /* Animations */
+        @keyframes fadeIn {
+            from { opacity: 0; transform: translateY(20px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+
+        /* Responsive */
+        @media (max-width: 768px) {
+            .hero h2 { font-size: 2.5rem; }
+            nav ul { display: none; } /* Pada versi real, ini bisa dijadikan menu hamburger */
+        }
+		
+		/* Gaya untuk Image Slider (Carousel) */
+        .carousel-container {
+            position: relative;
+            width: 100%;
+            height: 220px; /* Tinggi gambar */
+            border-radius: 8px;
+            overflow: hidden;
+            margin-bottom: 15px;
+        }
+
+        .carousel-track {
+            display: flex;
+            transition: transform 0.4s ease-in-out;
+            height: 100%;
+        }
+
+        .carousel-track img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            flex-shrink: 0; /* Mencegah gambar menyusut */
+        }
+
+        /* Tombol Navigasi Kiri & Kanan */
+        .carousel-btn {
+            position: absolute;
+            top: 50%;
+            transform: translateY(-50%);
+            background: rgba(15, 23, 42, 0.7);
+            color: var(--text-light);
+            border: 1px solid rgba(255, 255, 255, 0.1);
+            cursor: pointer;
+            width: 35px;
+            height: 35px;
+            border-radius: 50%;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            font-size: 1rem;
+            transition: 0.3s;
+            z-index: 2;
+        }
+
+        .carousel-btn:hover {
+            background: var(--primary);
+            color: var(--bg-main);
+        }
+
+        .prev-btn { left: 10px; }
+        .next-btn { right: 10px; }
+		
+		/* Gaya untuk Wadah Pop-up (Modal) */
+        .modal {
+            display: none; /* Sembunyikan secara default */
+            position: fixed;
+            z-index: 2000; /* Memastikan pop-up berada di atas header navigasi */
+            padding-top: 80px;
+            left: 0;
+            top: 0;
+            width: 100%;
+            height: 100%;
+            overflow: auto;
+            background-color: rgba(15, 23, 42, 0.95); /* Warna gelap transparan */
+            backdrop-filter: blur(8px); /* Efek kaca buram pada background */
+        }
+
+        /* Gaya untuk Gambar di dalam Pop-up */
+        .modal-content {
+            margin: auto;
+            display: block;
+            width: 90%;
+            max-width: 1000px;
+            border-radius: 8px;
+            box-shadow: 0 10px 40px rgba(0,0,0,0.5);
+            animation: zoom 0.4s ease-in-out;
+        }
+
+        /* Animasi membesar (Zoom) */
+        @keyframes zoom {
+            from {transform: scale(0.6); opacity: 0;}
+            to {transform: scale(1); opacity: 1;}
+        }
+
+        /* Tombol Silang (Close) */
+        .close-modal {
+            position: absolute;
+            top: 20px;
+            right: 40px;
+            color: var(--text-muted);
+            font-size: 45px;
+            font-weight: bold;
+            transition: 0.3s;
+            cursor: pointer;
+        }
+
+        .close-modal:hover,
+        .close-modal:focus {
+            color: var(--primary);
+            text-decoration: none;
+        }
+
+        /* Tambahan agar kursor berubah jadi telunjuk saat arahkan ke gambar biasa */
+        .carousel-track img, .profile-img-container img {
+            cursor: pointer;
+        }
+    </style>
+</head>
+<body>
+
+    <header>
+        <h1>Asyifa Nur Khasanah, S.T.</h1>
+        <nav>
+            <ul>
+                <li><a href="#about">Profil</a></li>
+                <li><a href="#education">Pendidikan</a></li>
+				<li><a href="#work-experience">Magang</a></li>
+                <li><a href="#projects">Proyek</a></li>
+                <li><a href="#experience">Pengalaman</a></li>
+                <li><a href="#skills">Keahlian & Sertifikasi</a></li>
+            </ul>
+        </nav>
+    </header>
+
+    <main>
+        <!-- Hero & Profil -->
+        <section id="about" class="hero">
+            <div class="profile-img-container">
+                <img src="foto-profil.jpg" alt="Foto Profil Asyifa Nur Khasanah">
+            </div>
+			
+			<p style="color: var(--primary); font-weight: 600; letter-spacing: 2px; margin-bottom: 10px;">HELLO, I AM</p>
+            <h2>Asyifa Nur Khasanah</h2>
+            <p class="subtitle">Mahasiswa Universitas Negeri Yogyakarta, Program Studi Teknik Manufaktur angkatan 2022. Tertarik mendalam pada Desain 3D Modeling, Perawatan & Perbaikan Alat, dan Pengelasan. Mampu mengoperasikan Mesin Bubut, Milling, Frais, dan CNC.</p>
+            
+            <p class="subtitle" style="font-size: 1rem;">Sebagai mahasiswa tingkat akhir, saya tengah berfokus menyelesaikan penelitian berjudul <em>"Pengaruh Heat Input terhadap Sifat Mekanis dan Laju Korosi pada Dissimilar Baja ASTM A36 dan AISI 1040 dengan Proses Pengelasan GMAW"</em>.</p>
+
+            <div class="contact-badges">
+                <div class="badge"><i class="fa-solid fa-location-dot"></i> Cilacap, Jawa Tengah Indonesia</div>
+                <div class="badge"><i class="fa-solid fa-envelope"></i> asyifakhasanah500@gmail.com</div>
+                <div class="badge"><i class="fa-solid fa-phone"></i> +62 857-4100-2715</div>
+            </div>
+        </section>
+
+        <!-- Pendidikan -->
+        <section id="education">
+            <h2 class="section-title"><i class="fa-solid fa-graduation-cap"></i> Pendidikan</h2>
+            <div class="card">
+                <h3>Universitas Negeri Yogyakarta</h3>
+                <span class="date">Angkatan 2022 - Juli 2026</span>
+                <p><strong>Fakultas Teknik, Program Studi Teknik Manufaktur S1</strong></p>
+                <p style="margin-top: 10px; color: var(--text-muted);">
+                    <i class="fa-solid fa-star" style="color: #fbbf24;"></i> GPA: 3,71 / 4,00
+                </p>
+                <p style="margin-top: 10px;"><strong>Mata Kuliah Relevan:</strong> HSE/K3, Total Quality Management, Manufacturing Process, Welding, Maintenance.</p>
+			</div>
+
+			<div class="card">
+                <h3>SMK Negeri 1 Cilacap</h3>
+                <span class="date">Angkatan 2020 - Agustus 2022</span>
+                <p><strong>Jurusan Usaha Perjalanan Wisata</strong></p>
+                <p style="margin-top: 10px; color: var(--text-muted);">
+                    <i class="fa-solid fa-star" style="color: #fbbf24;"></i> GPA: 88,33
+                </p>
+            </div>
+        </section>
+				
+		<!-- Pengalaman Kerja & Magang -->
+        <section id="work-experience">
+            <h2 class="section-title"><i class="fa-solid fa-briefcase"></i> Pengalaman Kerja & Magang</h2>
+            <div class="grid">
+                
+                <!-- Pengalaman Magang Industri (Isi jika ada) -->
+                <div class="card">
+                    <h3>Internship</h3>
+                    <span class="date"><i class="fa-regular fa-calendar"></i> Jul 2021 - Nov 2021 | PT. Lingkaran Bali</span>
+                    <p>🔹Memberikan pelayanan informasi kepada pengunjung terkait destinasi wisata secara informatif dan komunikatif.</p>
+					<p>🔹Membantu proses pelayanan pelanggan dengan memastikan kebutuhan informasi wisata terpenuhi secara tepat dan ramah.<p>
+					<p>🔹Mengelola konten serta membantu pengelolaan media sosial perusahaan untuk meningkatkan engagement dan promosi digital<p>
+                </div>
+				
+				<!-- Pengalaman Magang Industri (Isi jika ada) -->
+                <div class="card">
+                    <h3>Praktik Kerja Lapangan (PKL)</h3>
+                    <span class="date"><i class="fa-regular fa-calendar"></i> Okt 2025 - Des 2025 | PPSDM MIGAS Cepu</span>
+                    <p>🔹Mendukung kegiatan sertifikasi dengan berperan sebagai asisten pengawas untuk memastikan proses ujian berjalan tertib dan sesuai prosedur.</p>
+					<p>🔹Melakukan pengawasan peserta selama proses sertifikasi guna menjaga integritas dan kelancaran pelaksanaan kegiatan.<p>
+					<p>🔹Berkoordinasi dengan tim pelaksana dalam menjaga ketertiban serta kenyamanan lingkungan ujian<p>
+                </div>
+
+            </div>
+        </section>
+		
+        <!-- Proyek Unggulan -->
+        <section id="projects">
+            <h2 class="section-title"><i class="fa-solid fa-gears"></i> Project Experience & Manufacturing</h2>
+            <div class="grid">
+                <!-- Contoh Kartu Proyek dengan Slider -->
+                <div class="card">
+                    
+                    <!-- AREA SLIDER GAMBAR MULAI DI SINI -->
+                    <div class="carousel-container">
+                        <div class="carousel-track" id="slider-1" data-index="0">
+                            <!-- Ganti src dengan nama file gambarmu -->
+                            <img src="gambar-proyek-A1.jpg" alt="Dokumentasi 1" onclick="openModal(this)">
+                            <img src="gambar-proyek-A2.jpg" alt="Dokumentasi 2" onclick="openModal(this)">
+                            <img src="gambar-proyek-A3.jpg" alt="Dokumentasi 3" onclick="openModal(this)">
+                        </div>
+                        <!-- Tombol Kiri dan Kanan -->
+                        <button class="carousel-btn prev-btn" onclick="geserSlide(-1, 'slider-1')"><i class="fa-solid fa-chevron-left"></i></button>
+                        <button class="carousel-btn next-btn" onclick="geserSlide(1, 'slider-1')"><i class="fa-solid fa-chevron-right"></i></button>
+                    </div>
+                    <!-- AREA SLIDER GAMBAR SELESAI -->
+
+                    <h3>Desain Produk Umbrella Dryer</h3>
+                    <span class="date"><i class="fa-regular fa-calendar"></i> Nov 2024 | DPTM FT UNY</span>
+                    <p>🔹Merancang umbrella dryer portabel dengan pemilihan bahan penyerap air yang cepat kering dan wadah penampung air untuk menjaga kebersihan lantai.</p>
+					<p>🔹Mengembangkan solusi praktis berupa umbrella dryer yang mudah digunakan oleh konsumen di berbagai tempat, seperti seperti rumah, kantor, pusat perbelanjaan, dan ruang publik lainnya.<p>
+                </div>
+				
+                <!-- Contoh Kartu Proyek dengan Slider -->
+                <div class="card">
+                    
+                    <!-- AREA SLIDER GAMBAR MULAI DI SINI -->
+                    <div class="carousel-container">
+                        <div class="carousel-track" id="slider-2" data-index="0">
+                            <!-- Ganti src dengan nama file gambarmu -->
+                            <img src="gambar-proyek-A.jpg" alt="Dokumentasi 1" onclick="openModal(this)">
+                        </div>
+                        <!-- Tombol Kiri dan Kanan -->
+                        <button class="carousel-btn prev-btn" onclick="geserSlide(-1, 'slider-2')"><i class="fa-solid fa-chevron-left"></i></button>
+                        <button class="carousel-btn next-btn" onclick="geserSlide(1, 'slider-2')"><i class="fa-solid fa-chevron-right"></i></button>
+                    </div>
+                    <!-- AREA SLIDER GAMBAR SELESAI -->
+                    <h3>Analisis Perbaikan Pengendalian Kualitas Produk</h3>
+                    <span class="date"><i class="fa-regular fa-calendar"></i> Nov 2024 | Workshop Gun Aneka</span>
+                    <p>🔹Mengidentifikasi masalah kualitas dalam proses produksi pada suatu produk kusen di Workshop Gun Aneka.</p>
+					<p>🔹Mengevaluasi efektivitas metode Six Sigma dan FMEA dalam mengidentifikasi dan mengatasi masalah kualitas produk.<p>
+                </div>
+				
+                <!-- Contoh Kartu Proyek dengan Slider -->
+                <div class="card">
+                    
+                    <!-- AREA SLIDER GAMBAR MULAI DI SINI -->
+                    <div class="carousel-container">
+                        <div class="carousel-track" id="slider-3" data-index="0">
+                            <!-- Ganti src dengan nama file gambarmu -->
+                            <img src="gambar-proyek-B1.jpg" alt="Dokumentasi 1" onclick="openModal(this)">
+                            <img src="gambar-proyek-B2.jpg" alt="Dokumentasi 2" onclick="openModal(this)">
+                            <img src="gambar-proyek-B3.jpg" alt="Dokumentasi 3" onclick="openModal(this)">
+							<img src="gambar-proyek-B4.jpg" alt="Dokumentasi 4" onclick="openModal(this)">
+                        </div>
+                        <!-- Tombol Kiri dan Kanan -->
+                        <button class="carousel-btn prev-btn" onclick="geserSlide(-1, 'slider-3')"><i class="fa-solid fa-chevron-left"></i></button>
+                        <button class="carousel-btn next-btn" onclick="geserSlide(1, 'slider-3')"><i class="fa-solid fa-chevron-right"></i></button>
+                    </div>
+                    <!-- AREA SLIDER GAMBAR SELESAI -->
+					
+                    <h3>Rancang Bangun Speed Bump Power Generation Off-Grid Terintegrasi IoT Menggunakan Metode Algoritma dengan Teknologi Machine Learning</h3>
+                    <span class="date"><i class="fa-regular fa-calendar"></i> Feb 2025 | SIMBELMAWA KEMENDIKBUD</span>
+                    <p>🔹Merancang produk pembangkit listrik dengan mengkonversi energi mekanik kendaraan melalui speed bump menjadi energi listrik yang efisien dan berkelanjutan.</p>
+					<p>🔹Mengembangkan sistem IoT dan Machine Learning untuk monitoring secara real-time dan prediksi preventif kinerja komponen pembangkit listrik.<p>
+                </div>
+
+                <!-- Contoh Kartu Proyek dengan Slider -->
+                <div class="card">
+                    
+                    <!-- AREA SLIDER GAMBAR MULAI DI SINI -->
+                    <div class="carousel-container">
+                        <div class="carousel-track" id="slider-4" data-index="0">
+                            <!-- Ganti src dengan nama file gambarmu -->
+                            <img src="gambar-proyek-C1.jpg" alt="Dokumentasi 1" onclick="openModal(this)">
+                            <img src="gambar-proyek-C2.jpg" alt="Dokumentasi 2" onclick="openModal(this)">
+                        </div>
+                        <!-- Tombol Kiri dan Kanan -->
+                        <button class="carousel-btn prev-btn" onclick="geserSlide(-1, 'slider-4')"><i class="fa-solid fa-chevron-left"></i></button>
+                        <button class="carousel-btn next-btn" onclick="geserSlide(1, 'slider-4')"><i class="fa-solid fa-chevron-right"></i></button>
+                    </div>
+                    <!-- AREA SLIDER GAMBAR SELESAI -->
+					
+                    <h3>Desain Jig & Fixture Manual Drilling</h3>
+                    <span class="date"><i class="fa-regular fa-calendar"></i> Apr 2025 | DPTM FT UNY</span>
+                    <p>🔹Merancang jig & fixture untuk proses manual drilling guna meningkatkan akurasi posisi pengeboran dan menjaga konsistensi kualitas produk pada produksi massal.</p>
+					<p>🔹Mengembangkan desain alat bantu yang ergonomis dan mudah digunakan untuk mempercepat proses produksi serta mengurangi potensi kesalahan operator selama proses pengeboran.<p>
+                </div>
+				
+				<!-- Contoh Kartu Proyek dengan Slider -->
+                <div class="card">
+                    
+                    <!-- AREA SLIDER GAMBAR MULAI DI SINI -->
+                    <div class="carousel-container">
+                        <div class="carousel-track" id="slider-5" data-index="0">
+                            <!-- Ganti src dengan nama file gambarmu -->
+                            <img src="gambar-proyek-F1.jpg" alt="Dokumentasi 1" onclick="openModal(this)">
+                            <img src="gambar-proyek-F2.jpg" alt="Dokumentasi 2" onclick="openModal(this)">
+							<img src="gambar-proyek-F3.jpg" alt="Dokumentasi 3" onclick="openModal(this)">
+							<img src="gambar-proyek-F4.jpg" alt="Dokumentasi 4" onclick="openModal(this)">
+							<img src="gambar-proyek-F5.jpg" alt="Dokumentasi 5" onclick="openModal(this)">
+                        </div>
+                        <!-- Tombol Kiri dan Kanan -->
+                        <button class="carousel-btn prev-btn" onclick="geserSlide(-1, 'slider-5')"><i class="fa-solid fa-chevron-left"></i></button>
+                        <button class="carousel-btn next-btn" onclick="geserSlide(1, 'slider-5')"><i class="fa-solid fa-chevron-right"></i></button>
+                    </div>
+                    <!-- AREA SLIDER GAMBAR SELESAI -->
+					
+                    <h3>Desain Jig & Fixture Produk Cover On-Off Sistem Pengereman Kereta</h3>
+                    <span class="date"><i class="fa-regular fa-calendar"></i> Apr 2025 | DPTM FT UNY</span>
+                    <p>🔹Merancang jig & fixture untuk untuk memegang benda kerja secara presisi, yang akan mengurangi kesalahan manusia dan produk cacat, sehingga menghemat biaya material dan pengerjaan ulang.</p>
+					<p>🔹Mengembangkan desain alat bantu yang ergonomis dan relatif memiliki sedikit komponen utama yang terpisah, yang dapat mengurangi waktu perakitan dan biaya tenaga kerja.<p>
+                </div>
+                
+                <!-- Contoh Kartu Proyek dengan Slider -->
+                <div class="card">
+                    
+                    <!-- AREA SLIDER GAMBAR MULAI DI SINI -->
+                    <div class="carousel-container">
+                        <div class="carousel-track" id="slider-6" data-index="0">
+                            <!-- Ganti src dengan nama file gambarmu -->
+                            <img src="gambar-proyek-D1.jpg" alt="Dokumentasi 1" onclick="openModal(this)">
+                            <img src="gambar-proyek-D2.jpg" alt="Dokumentasi 2" onclick="openModal(this)">
+                        </div>
+                        <!-- Tombol Kiri dan Kanan -->
+                        <button class="carousel-btn prev-btn" onclick="geserSlide(-1, 'slider-6')"><i class="fa-solid fa-chevron-left"></i></button>
+                        <button class="carousel-btn next-btn" onclick="geserSlide(1, 'slider-6')"><i class="fa-solid fa-chevron-right"></i></button>
+                    </div>
+                    <!-- AREA SLIDER GAMBAR SELESAI -->
+					
+                    <h3>Memproduksi Helm Menggunakan Serat Karbon</h3>
+                    <span class="date"><i class="fa-regular fa-calendar"></i> Jun 2025 | DPTM FT UNY</span>
+                    <p>🔹Mengembangkan proses fabrikasi helm berbasis komposit serat karbon serta melakukan evaluasi kualitas hasil manufaktur.</p>
+                </div>
+				
+				<!-- Contoh Kartu Proyek dengan Slider -->
+                <div class="card">
+                    
+                    <!-- AREA SLIDER GAMBAR MULAI DI SINI -->
+                    <div class="carousel-container">
+                        <div class="carousel-track" id="slider-7" data-index="0">
+                            <!-- Ganti src dengan nama file gambarmu -->
+                            <img src="gambar-proyek-E1.jpg" alt="Dokumentasi 1" onclick="openModal(this)">
+                            <img src="gambar-proyek-E2.jpg" alt="Dokumentasi 2" onclick="openModal(this)">
+							<img src="gambar-proyek-E3.jpg" alt="Dokumentasi 3" onclick="openModal(this)">
+							<img src="gambar-proyek-E4.jpg" alt="Dokumentasi 4" onclick="openModal(this)">
+							<img src="gambar-proyek-E5.jpg" alt="Dokumentasi 5" onclick="openModal(this)">
+							<img src="gambar-proyek-E6.jpg" alt="Dokumentasi 6" onclick="openModal(this)">
+							<img src="gambar-proyek-E7.jpg" alt="Dokumentasi 7" onclick="openModal(this)">
+							<img src="gambar-proyek-E8.jpg" alt="Dokumentasi 8" onclick="openModal(this)">
+                        </div>
+                        <!-- Tombol Kiri dan Kanan -->
+                        <button class="carousel-btn prev-btn" onclick="geserSlide(-1, 'slider-7')"><i class="fa-solid fa-chevron-left"></i></button>
+                        <button class="carousel-btn next-btn" onclick="geserSlide(1, 'slider-7')"><i class="fa-solid fa-chevron-right"></i></button>
+                    </div>
+                    <!-- AREA SLIDER GAMBAR SELESAI -->
+					
+                    <h3>Membuat Cetakan/Mold Hammer Head dengan Mesin 3D Print pada Proses Pengecoran</h3>
+                    <span class="date"><i class="fa-regular fa-calendar"></i> Jun 2025 | DPTM FT UNY</span>
+                    <p>🔹Merancang dan membuat cetakan (mold) hammer head menggunakan 3D printing sebagai pola untuk mendukung proses pengecoran logam.</p>
+					<p>🔹Mengintegrasikan teknologi manufaktur aditif dengan proses pengecoran guna meningkatkan fleksibilitas desain dan efisiensi pembuatan cetakan.<p>
+                </div>
+				
+				<!-- Contoh Kartu Proyek dengan Slider -->
+                <div class="card">
+                    
+                    <!-- AREA SLIDER GAMBAR MULAI DI SINI -->
+                    <div class="carousel-container">
+                        <div class="carousel-track" id="slider-8" data-index="0">
+                            <!-- Ganti src dengan nama file gambarmu -->
+                            <img src="gambar-proyek-G1.jpg" alt="Dokumentasi 1" onclick="openModal(this)">
+                            <img src="gambar-proyek-G2.jpg" alt="Dokumentasi 2" onclick="openModal(this)">
+                        </div>
+                        <!-- Tombol Kiri dan Kanan -->
+                        <button class="carousel-btn prev-btn" onclick="geserSlide(-1, 'slider-8')"><i class="fa-solid fa-chevron-left"></i></button>
+                        <button class="carousel-btn next-btn" onclick="geserSlide(1, 'slider-8')"><i class="fa-solid fa-chevron-right"></i></button>
+                    </div>
+                    <!-- AREA SLIDER GAMBAR SELESAI -->
+					
+                    <h3>Membuat Produk Berupa Plakat Akrilik Menggunakan Mesin Laser Cutting CO2</h3>
+                    <span class="date"><i class="fa-regular fa-calendar"></i> Jun 2025 | DPTM FT UNY</span>
+                    <p>🔹Mendesain dan memproduksi plakat akrilik menggunakan mesin laser cutting CO₂ dengan memperhatikan ketelitian dimensi dan kualitas hasil pemotongan.</p>
+					<p>🔹Memastikan kualitas produk melalui pengaturan parameter mesin yang tepat untuk menghasilkan potongan yang presisi dan permukaan yang rapi.<p>
+                </div>
+            </div>
+        </section>
+
+        <!-- Pengalaman Organisasi -->
+        <section id="experience">
+            <h2 class="section-title"><i class="fa-solid fa-users"></i> Pengalaman Organisasi</h2>
+            <div class="grid">
+                <div class="card">
+                    <h3>Wakil Kepala Divisi MIKAT (Minat dan Bakat)</h3>
+                    <span class="date">Jan – Des 2024 | HIMA Mesin UNY</span>
+                    <p>🔹Mengelola dan mengawasi perkembangan staf.</p>
+					<p>🔹Berkontribusi dalam segala program kerja HIMA Mesin FT UNY 2024.<p>
+                </div>
+				<div class="card">
+                    <h3>Manager Tim Divisi PUBG Mobile</h3>
+                    <span class="date">Jan – Des 2024 | UNY E-sport</span>
+                    <p>🔹Mengelola operasional dan kebutuhan tim dalam persiapan kompetisi PUBG Mobile di luar maupun di lingkungan UNY Esport.</p>
+					<p>🔹Mengatur koordinasi internal tim, termasuk jadwal latihan, strategi, dan komunikasi antar anggota.<p>
+                </div>
+                <div class="card">
+                    <h3>Ketua Pelaksana – Green Campus</h3>
+                    <span class="date">Okt 2023 | HIMA Mesin UNY</span>
+                    <p>🔹Bertanggung jawab atas berjalannya acara Green Campus hingga selesai.</p>
+					<p>🔹Memberikan materi penyuluhan mengenai Green Campus kepada mahasiswa terutama kepada mahasiswa baru.</p>
+                </div>
+				<div class="card">
+                    <h3>Staf Divisi MIKAT (Minat dan Bakat)</h3>
+                    <span class="date">Jan – Des 2023 | HIMA Mesin UNY</span>
+                    <p>🔹Sebagai staf di periode kepengurusan 2023 di bidang E-sports.</p>
+					<p>🔹Bertanggung jawab atas Program Kerja PPMB (Pendukungan Pengembangan Minat dan Bakat), dan MEC (Mechanical Engineering Competition).</p>
+					<p>🔹Sebagai pelatih, penyalur, pembuat acara, dan mewadahi prestasi mahasiswa di bidang non-akademik.<p>
+                </div>
+            </div>
+        </section>
+
+        <!-- Keahlian & Sertifikasi -->
+        <section id="skills">
+            <h2 class="section-title"><i class="fa-solid fa-screwdriver-wrench"></i> Keahlian & Sertifikat</h2>
+            
+            <h3 style="margin-bottom: 1rem; font-size: 1.2rem;">Keahlian Utama (Hard & Soft Skills)</h3>
+            <div class="skills-wrapper">
+                <div class="skill-tag">2D/3D CAD</div>
+                <div class="skill-tag">Turning/Milling Machine</div>
+                <div class="skill-tag">Welding 3G (SMAW & GMAW)</div>
+                <div class="skill-tag">Tool Maintenance</div>
+                <div class="skill-tag">Autodesk Inventor</div>
+                <div class="skill-tag">Microsoft Office (Word, Excel, PPT)</div>
+                <div class="skill-tag">Problem-solving</div>
+                <div class="skill-tag">Team Management</div>
+				<div class="skill-tag">Creativity</div>
+                <div class="skill-tag">Listening skills</div>
+                <div class="skill-tag">Editing Software (Canva/Cap Cut)</div>
+            </div>
+
+            <h3 style="margin-bottom: 1rem; font-size: 1.2rem; margin-top: 2rem;">Sertifikasi & Bukti Kompetensi</h3>
+            <ul class="cert-list">
+                <li>
+                    <i class="fa-solid fa-certificate"></i>
+                    <div>
+                        <strong>Pengelasan SMAW 3G BNSP</strong><br>
+                        <span style="font-size: 0.85rem; color: var(--text-muted);">LSP LMI (2026)</span>
+                    </div>
+					<a href="sertifikat-bnsp.pdf" target="_blank" class="btn-pdf">Lihat PDF <i class="fa-solid fa-arrow-up-right-from-square"></i></a>
+                </li>
+                <li>
+                    <i class="fa-solid fa-shield-halved"></i>
+                    <div>
+                        <strong>Tanggap Darurat K3 Kebakaran MIGAS</strong><br>
+                        <span style="font-size: 0.85rem; color: var(--text-muted);">MMS (2025)</span>
+                    </div>
+					<a href="sertifikat-k3.pdf" target="_blank" class="btn-pdf">Lihat PDF <i class="fa-solid fa-arrow-up-right-from-square"></i></a>
+                </li>
+                <li>
+                    <i class="fa-solid fa-fire-burner"></i>
+                    <div>
+                        <strong>Pelatihan Pengelasan SMAW 3G</strong><br>
+                        <span style="font-size: 0.85rem; color: var(--text-muted);">TUK 074 JPTM FT UNY (2025)</span>
+                    </div>
+					<a href="sertifikat-pelatihan.pdf" target="_blank" class="btn-pdf">Lihat PDF <i class="fa-solid fa-arrow-up-right-from-square"></i></a>
+                </li>
+                <li>
+                    <i class="fa-solid fa-language"></i>
+                    <div>
+                        <strong>TOEFL EPT</strong><br>
+                        <span style="font-size: 0.85rem; color: var(--text-muted);">Daily Bahasa Inggris (2025)</span>
+                    </div>
+					<a href="sertifikat-TOEFL.pdf" target="_blank" class="btn-pdf">Lihat PDF <i class="fa-solid fa-arrow-up-right-from-square"></i></a>
+                </li>
+            </ul>
+        </section>
+    </main>
+
+<div id="imageModal" class="modal">
+        <span class="close-modal" onclick="closeModal()">&times;</span>
+        <img class="modal-content" id="img01">
+    </div>
+	
+    <footer>
+        <p>&copy; 2026 Asyifa Nur Khasanah. Built with passion for Manufacturing Engineering.</p>
+    </footer>
+
+<!-- Script untuk Image Slider -->
+    <script>
+	// Fungsi untuk membuka Pop-up
+        function openModal(elementGambar) {
+            var modal = document.getElementById("imageModal");
+            var gambarPopUp = document.getElementById("img01");
+            
+            modal.style.display = "block";
+            gambarPopUp.src = elementGambar.src; // Mengambil sumber (src) dari gambar yang diklik
+        }
+
+        // Fungsi untuk menutup Pop-up
+        function closeModal() {
+            var modal = document.getElementById("imageModal");
+            modal.style.display = "none";
+        }
+
+        // Tambahan fitur: Tutup pop-up jika pengguna mengklik area gelap di luar gambar
+        window.onclick = function(event) {
+            var modal = document.getElementById("imageModal");
+            if (event.target == modal) {
+                modal.style.display = "none";
+            }
+        }
+        function geserSlide(arah, idSlider) {
+            const track = document.getElementById(idSlider);
+            const gambar = track.querySelectorAll('img');
+            const totalGambar = gambar.length;
+            
+            // Mengambil urutan (index) gambar saat ini
+            let indexSaatIni = parseInt(track.getAttribute('data-index')) || 0;
+            
+            // Menghitung index selanjutnya
+            indexSaatIni += arah;
+            
+            // Membuat efek berulang (loop). Jika di gambar terakhir tekan kanan, balik ke awal.
+            if (indexSaatIni >= totalGambar) {
+                indexSaatIni = 0;
+            } else if (indexSaatIni < 0) {
+                indexSaatIni = totalGambar - 1;
+            }
+            
+            // Menyimpan index baru dan menggeser gambar menggunakan CSS
+            track.setAttribute('data-index', indexSaatIni);
+            track.style.transform = `translateX(-${indexSaatIni * 100}%)`;
+        }
+    </script>
+	
+</body>
+</html>
